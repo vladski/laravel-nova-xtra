@@ -1,17 +1,4 @@
 {
-    "name": "laravel-nova-xtra",
-    "description": "A Laravel Nova tool for extra features like modal, tooltips, internal pages and custom navigation.",
-    "version": "1.0.0",
-    "keywords": [
-        "laravel",
-        "nova",
-        "modal",
-        "tooltip",
-        "navigation",
-        "internal pages"
-    ],
-    "author": "Vladimir Kundrat <vlado@12345.com.au>",
-    "private": false,
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -28,8 +15,5 @@
     "dependencies": {
         "tippy.js": "^6.2.5",
         "vue": "^2.5.0"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
     }
 }
