@@ -1,0 +1,49 @@
+{
+    "name": "vladski/laravel-nova-xtra",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "modal",
+        "tooltip",
+        "navigation",
+        "pages"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir Kundrat",
+            "email": "vlado@12345.com.au"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vladski\\NovaXtra\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vladski\\NovaXtra\\ToolServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "require-dev": {
+        "laravel/framework": "^7.21",
+        "laravel/nova": "^3.8"
+    }
+}
