@@ -13,7 +13,7 @@ This is an early stage of the package development I am using and testing inside 
 ### Install
 
 ```
-composer require v ladski/laravel-nova-xtra
+composer require vladski/laravel-nova-xtra
 ```
 
 ### Usage

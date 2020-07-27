@@ -16,5 +16,8 @@
     "dependencies": {
         "tippy.js": "^6.2.5",
         "vue": "^2.5.0"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
     }
 }
