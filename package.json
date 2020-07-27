@@ -11,7 +11,7 @@
         "internal pages"
     ],
     "author": "Vladimir Kundrat <vlado@12345.com.au>",
-    "private": true,
+    "private": false,
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
