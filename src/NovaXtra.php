@@ -8,7 +8,7 @@ use Laravel\Nova\Tool;
 class NovaXtra extends Tool
 {
     public $navigation = [];
-    private static $version = '0.0.1';
+    private static $version = '1.0.1';
 
     /**
      * Perform any tasks that need to happen when the tool is booted.
