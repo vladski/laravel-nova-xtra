@@ -7,8 +7,10 @@ use Laravel\Nova\Tool;
 
 class NovaXtra extends Tool
 {
-    public $navigation = [];
     private static $version = '1.0.1';
+
+    public $navigation = [];
+    public $groupItemKeys = [];
 
     /**
      * Perform any tasks that need to happen when the tool is booted.
@@ -28,6 +30,10 @@ class NovaXtra extends Tool
      */
     public function renderNavigation()
     {
+        // delete empty groups
+        foreach ($this->groupItemKeys as $groupKey => $itemKeys) {
+            $this->navigation[$groupKey]['count'] = count($itemKeys);
+        }
         return view('nova-xtra::navigation',[
             'items' => $this->navigation,
         ]);
@@ -38,49 +44,74 @@ class NovaXtra extends Tool
         return self::$version;
     }
 
-    public function addNavigationGroup($name, $icon = '', $canSee = null) {
-        if (!$this->canSeeInNavigation($canSee)) return $this;
+    public function addNavigationGroup($label, $icon = '', $collapsible = false, $collapsed = false) {
         $this->navigation[] = [
             'type' => 'group',
-            'name' => $name ?? 'Group',
+            'label' => $label ?? 'Group',
             'icon' => $icon ?? null,
+            'collapsible' => !empty($collapsible),
+            'collapsed' => !empty($collapsed),
+            'count' => 0, // number of items in group is populated on rendering
         ];
+        $this->groupItemKeys[array_key_last($this->navigation)] = []; // start collecting group items keys
         return $this;
     }
 
-    public function addNavigationPage($name, $slug, $controllerAction, $canSee = null) {
+    public function addNavigationPage($label, $slug, $controllerAction, $canSee = true, $options = []) {
         if (!$this->canSeeInNavigation($canSee)) return $this;
         $this->navigation[] = [
             'type' => 'page',
-            'name' => $name ?? 'Page',
+            'label' => $label ?? 'Page',
             'slug' => $slug ?? '',
             'controller' => $controllerAction ?? '',
+            'icon' => $options['icon'] ?? '',
         ];
+        // register link in group
+        if ($this->groupItemKeys) $this->groupItemKeys[array_key_last($this->groupItemKeys)][] = array_key_last($this->navigation);
         return $this;
     }
 
-    public function addNavigationIntroPage($name = 'Xtra Intro', $slug = 'xtraintro', $canSee = null) {
-        return $this->addNavigationPage($name, $slug, 'Vladski\NovaXtra\Http\Controllers\IntroPageController@index', $canSee);
+    public function addNavigationIntroPage($label = 'About Nova Xtra', $slug = 'intro', $canSee = true, $options = []) {
+        return $this->addNavigationPage($label, $slug, 'Vladski\NovaXtra\Http\Controllers\IntroPageController@index', $canSee, $options);
     }
 
-    public function addNavigationLink($name, $href, $canSee = null) {
+    public function addNavigationLink($label, $href, $canSee = true, $options = []) {
         if (!$this->canSeeInNavigation($canSee)) return $this;
         $this->navigation[] = [
             'type' => 'link',
-            'name' => $name ?? 'Link',
+            'label' => $label ?? 'Link',
             'href' => $href ?? '#',
+            'icon' => $options['icon'] ?? '',
         ];
+        // register link in group
+        if ($this->groupItemKeys) $this->groupItemKeys[array_key_last($this->groupItemKeys)][] = array_key_last($this->navigation);
         return $this;
     }
 
-    public function addNavigationRoute($name, $routeName, $routeParams = [], $canSee = null) {
+    public function addNavigationRoute($label, $routeName, $routeParams = [], $canSee = true, $options = []) {
         if (!$this->canSeeInNavigation($canSee)) return $this;
         $this->navigation[] = [
             'type' => 'route',
-            'name' => $name ?? 'Route',
+            'label' => $label ?? 'Route',
             'routeName' => $routeName ?? '',
             'routeParams' => $routeParams ?? [],
+            'icon' => $options['icon'] ?? '',
         ];
+        // register link in group
+        if ($this->groupItemKeys) $this->groupItemKeys[array_key_last($this->groupItemKeys)][] = array_key_last($this->navigation);
+        return $this;
+    }
+
+    public function addNavigationResourceGroup($resourceGroup, $label = '', $icon = '', $options = []) {
+        $request = request();
+        $navigation = Nova::groupedResourcesForNavigation($request);
+        if (!$navigation->has($resourceGroup)) return $this;
+
+        if ($label) $this->addNavigationGroup($label, $icon, $options);
+
+        foreach($navigation->get($resourceGroup) as $resource) {
+            $this->addNavigationRoute($resource::label(), 'index', $routeParams = ['resourceName' => $resource::uriKey()]);
+        }
         return $this;
     }
 

@@ -220,4 +220,19 @@ export default class NovaXtraClass {
             }
         }
     };
+
+  /**
+   * Expand-collapse next element sibling by toggling class 'hidden' on it
+   * Toggler gets class 'collapsed' if the sibling is hidded
+   * @param el - toggle element
+   */
+  toggleSibling(el) {
+    if (el.nextElementSibling.classList.contains('hidden')) {
+      el.nextElementSibling.classList.remove('hidden')
+      el.classList.remove('collapsed');
+    } else {
+      el.nextElementSibling.classList.add('hidden')
+      el.classList.add('collapsed');
+    }
+  }
 }
