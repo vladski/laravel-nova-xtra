@@ -1,9 +1,10 @@
 {
     "name": "vladski/laravel-nova-xtra",
-    "description": "A Laravel Nova tool for extra features like modal, tooltips, internal pages and custom navigation.",
+    "description": "A Laravel Nova tool for extra features out of the box - theme, modal, tooltips, internal pages, navigation.",
     "keywords": [
         "laravel",
         "nova",
+        "nova theme",
         "modal",
         "tooltip",
         "navigation",
