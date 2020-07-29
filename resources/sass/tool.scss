@@ -1,12 +1,12 @@
-// Modal
-.nxtra-modal {}
-.nxtra_modal_content {
-    min-width: 150px;
+/*---------- Modal ----------*/
+.xtra-modal {}
+.xtra-modal-content {
+    min-width: 300px;
     min-height: 150px;
 }
 
-// Navigation
-.nxtra-navigation-group {
+/*---------- Navigation ----------*/
+.xtra-navigation-group {
   svg.collapsed {
     display: none;
   }
@@ -19,15 +19,15 @@
     }
   }
 }
-.nxtra-navigation-list {
+.xtra-navigation-list {
   &.collapsed {
     display: none;
   }
 }
 
-// Tooltip
+/*---------- Tooltip ----------*/
 .tippy-content {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.3em;
 }
 [data-tippy-content] {

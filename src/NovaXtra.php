@@ -7,10 +7,10 @@ use Laravel\Nova\Tool;
 
 class NovaXtra extends Tool
 {
-    private static $version = '1.0.1';
-
     public $navigation = [];
     public $groupItemKeys = [];
+
+    private $theme = false;
 
     /**
      * Perform any tasks that need to happen when the tool is booted.
@@ -21,6 +21,20 @@ class NovaXtra extends Tool
     {
         Nova::script('nova-xtra', __DIR__.'/../dist/js/tool.js');
         Nova::style('nova-xtra', __DIR__.'/../dist/css/tool.css');
+
+        // Inject Theme
+        if ($this->theme) {
+            Nova::script('nova-xtra-theme', __DIR__.'/../dist/js/theme.js');
+            $themePath = resource_path("css/vendor/nova-xtra/theme_{$this->theme}.css");
+            if (file_exists($themePath)) {
+                Nova::style('nova-xtra-theme', $themePath);
+            }
+        }
+    }
+
+    public function theme($name = 'xtra') {
+        $this->theme= !$name ? false : (is_string($name) ? $name : 'default');
+        return $this;
     }
 
     /**
@@ -38,10 +52,6 @@ class NovaXtra extends Tool
             'items' => $this->navigation,
         ]);
         //return null;
-    }
-
-    public static function version() {
-        return self::$version;
     }
 
     public function addNavigationGroup($label, $icon = '', $collapsible = false, $collapsed = false) {

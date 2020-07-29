@@ -7,16 +7,12 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-use Vladski\NovaXtra\NovaXtra;
-
 class IntroPageController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index() {
-        return view('nova-xtra::page_intro',[
-            'version' => NovaXtra::version(),
-        ]);
+        return view('nova-xtra::page_intro');
     }
 
 }

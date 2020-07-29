@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use Vladski\NovaXtra\Http\Middleware\Authorize;
-use Vladski\NovaXtra\Http\Middleware\Page;
 
 class ToolServiceProvider extends ServiceProvider
 {
@@ -27,6 +26,10 @@ class ToolServiceProvider extends ServiceProvider
         Nova::serving(function (ServingNova $event) {
             //
         });
+
+        $this->publishes([
+            __DIR__ . '/../resources/css' => resource_path('css/vendor/nova-xtra'),
+        ]);
     }
 
     /**

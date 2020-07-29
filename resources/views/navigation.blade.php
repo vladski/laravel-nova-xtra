@@ -2,15 +2,15 @@
     $i = 0;
     $group = [];
 @endphp
-<div class="nxtra-navigation">
+<div class="xtra-navigation">
 @while(!empty($items[$i]))
 
     @if($items[$i]['type'] == 'group' && $items[$i]['count']) {{-- group with items --}}
         @php
             $group = $items[$i];
         @endphp
-        <h4 class="nxtra-navigation-group ml-8 mb-4 pr-4 text-xs text-70 uppercase tracking-wide relative cursor-default
-            @if($items[$i]['collapsible']) hover:text-80 cursor-pointer @endif
+        <h4 class="xtra-navigation-group ml-8 mb-4 pr-4 text-xs text-70 uppercase tracking-wide relative cursor-default
+            @if($items[$i]['collapsible']) hover:text-20 cursor-pointer @endif
             @if($items[$i]['collapsible'] && $items[$i]['collapsed']) collapsed @endif"
             @if($items[$i]['collapsible']) onclick="Nxtra.toggleSibling(this);" @endif
         >
@@ -27,7 +27,7 @@
     @elseif(in_array($items[$i]['type'], ['page','link','route']))
 
         @if(!isset($items[$i-1]) or !in_array($items[$i-1]['type'], ['page','link','route']))
-            <ul class="nxtra-navigation-list list-reset mb-8
+            <ul class="xtra-navigation-list list-reset mb-8
                 @if(!empty($group['collapsible']) && !empty($group['collapsed'])) hidden @endif"
                 data-navigation-group="{{ $group['label'] ?? '' }}"
                 data-navigation-num="{{ $i }}">
@@ -35,7 +35,7 @@
                 <li class="leading-tight mb-4 ml-8 text-sm">
 
                     @if($items[$i]['type'] == 'page')
-                        <router-link tag="a" :to="{name:'nova-xtra-page', params:{slug:'{{ $items[$i]['slug'] }}'}}" class="text-white text-justify no-underline dim">
+                        <router-link tag="a" :to="{name:'nova-xtra-page', params:{slug:'{{ $items[$i]['slug'] }}'}}" class="inline-block text-white text-justify no-underline dim">
                             @if(!empty($items[$i]['icon']))
                                 <div class="flex items-start">
                                     <div class="w-4 h-2 mr-1">{!! $items[$i]['icon'] !!}</div>
@@ -47,7 +47,7 @@
                         </router-link>
 
                     @elseif($items[$i]['type'] == 'route')
-                        <router-link tag="a" :to="{name:'{{ $items[$i]['routeName'] }}', params: {{ json_encode($items[$i]['routeParams']) }} }" class="text-white text-justify no-underline dim">
+                        <router-link tag="a" :to="{name:'{{ $items[$i]['routeName'] }}', params: {{ json_encode($items[$i]['routeParams']) }} }" class="inline-block text-white text-justify no-underline dim">
                             @if(!empty($items[$i]['icon']))
                                 <div class="flex items-start">
                                     <div class="w-4 h-2 mr-1">{!! $items[$i]['icon'] !!}</div>
@@ -59,7 +59,7 @@
                         </router-link>
 
                     @elseif($items[$i]['type'] == 'link')
-                        <a href="{{ $items[$i]['href'] }}" class="text-white text-justify no-underline dim">
+                        <a href="{{ $items[$i]['href'] }}" class="inline-block text-white text-justify no-underline dim">
                             @if(!empty($items[$i]['icon']))
                                 <div class="flex items-start">
                                     <div class="w-4 h-2 mr-1">{!! $items[$i]['icon'] !!}</div>

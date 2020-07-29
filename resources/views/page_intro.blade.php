@@ -2,7 +2,6 @@
     <div class="flex mb-6 items-center justify-between">
         <h1 class="text-90 font-normal text-2xl">
             Nova Xtra
-            <small>v{{ $version }}</small>
         </h1>
         <button class="btn btn-default btn-primary ml-auto mr-3" onclick="Nxtra.reloadCurrent();">
             Refresh Content
@@ -54,16 +53,6 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="bg-30"><span class="font-bold">Modal Window</span></td>
-                <td colspan="2" class="bg-30">....</td>
-            </tr>
-
-            <tr>
-                <td class="bg-30"><span class="font-bold">Internal Page</span></td>
-                <td colspan="2" class="bg-30">....</td>
-            </tr>
-
             {{-- NAVIGATION --}}
             <tr>
                 <td class="bg-30"><span class="font-bold">Navigation</span></td>
@@ -90,13 +79,28 @@
                 <td class="font-bold">Link</td>
                 <td class="py-3" colspan="2">
                     <div class="my-1">Standard (a) tag link providing href attribute</div>
-                    <div class="my-2"><code class="text-info-dark font-bold">->addNavigationLink($label, $href, $canSee = true)</code></div>
+                    <div class="my-2"><code class="text-info-dark font-bold">->addNavigationLink($label, $href, $canSee = true, $options = [])</code></div>
                     <div class="my-1 text-sm">
                         <b>$label</b> navigation label<br>
                         <b>$href</b> url | "javascript: ....;"<br>
                         <b>$canSee</b> boolean | callable | user ability<br>
                     </div>
                 </td>
+            </tr>
+
+            <tr>
+                <td class="bg-30"><span class="font-bold">Custom Theme</span></td>
+                <td colspan="2" class="bg-30">....</td>
+            </tr>
+
+            <tr>
+                <td class="bg-30"><span class="font-bold">Modal Window</span></td>
+                <td colspan="2" class="bg-30">....</td>
+            </tr>
+
+            <tr>
+                <td class="bg-30"><span class="font-bold">Internal Page</span></td>
+                <td colspan="2" class="bg-30">....</td>
             </tr>
             </tbody>
         </table>

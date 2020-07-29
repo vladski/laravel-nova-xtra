@@ -1,0 +1,129 @@
+/* based on https://github.com/gregoriohc/laravel-nova-theme-classify/ */
+/************************* Global colors **************************/
+:root {
+    --transparent: transparent;
+    --black: #22292f;
+    --white: white;
+    --white-50: rgba(255, 255, 255, 0.5);
+    --danger: #e74444;
+    --success: #21b978;
+    --warning: #ffeb3b;
+    --info: #03a9f4;
+    --primary: #4099de;
+    --primary-dark: #297ec0;
+    --primary-70: rgba(64, 153, 222, 0.7);
+    --primary-50: rgba(64, 153, 222, 0.5);
+    --primary-30: rgba(64, 153, 222, 0.3);
+    --primary-10: rgba(64, 153, 222, 0.1);
+    --logo: #252d37;
+    --sidebar-icon: #b3c1d1;
+    --20: #f6fbff;
+    --30: #f4f7fa;
+    --40: #eef1f4;
+    --50: #e3e7eb;
+    --60: #bacad6;
+    --70: #b3b9bf;
+    --80: #7c858e;
+    --90: #252d37;
+    --90-half: rgba(40, 54, 61, 0.5);
+}
+
+/************************* Header **************************/
+.xtra-page-header {
+}
+
+.xtra-page-header .xtra-site-title {
+}
+
+.xtra-page-header .xtra-global-search {
+}
+
+.xtra-page-header .xtra-user-name {
+}
+
+.xtra-page-header .xtra-user-menu {
+}
+
+/************************* Sidebar **************************/
+.xtra-page-sidebar {
+}
+
+.xtra-page-sidebar .bg-logo {
+}
+
+.xtra-page-sidebar h3 {
+}
+
+.xtra-page-sidebar ul li {
+}
+
+/************************* Content **************************/
+.xtra-page-content {
+}
+
+.xtra-page-footer {
+}
+
+/************************* Resource Index **************************/
+.xtra-resource-index {
+}
+
+.xtra-resource-index .xtra-index-actions-container {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-action-select {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-action-select select {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-action-select button {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-delete-menu {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-filters-select {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-filters-menu {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-filters-menu .xtra-filter-title {
+}
+
+.xtra-resource-index .xtra-index-actions-container .xtra-filters-menu .xtra-filter-options {
+}
+
+/************************* Resource Detail **************************/
+.xtra-resource-detail {
+}
+
+.xtra-resource-detail .xtra-details-actions-container {
+}
+
+/************************* Resource Forms **************************/
+.xtra-resource-form {
+}
+
+.xtra-resource-form .xtra-form-group {
+}
+
+.xtra-resource-form .xtra-form-footer {
+}
+
+.xtra-resource-form .xtra-form-errors {
+}
+
+.xtra-resource-edit {
+}
+
+.xtra-resource-create {
+}
+
+/************************* Cards **************************/
+.xtra-card-panel-container {
+}
+
+.xtra-card-panel-container .card-panel {
+}
