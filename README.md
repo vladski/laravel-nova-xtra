@@ -26,7 +26,7 @@ public function tools()
 
             (new \Vladski\NovaXtra\NovaXtra)
 
-                // turn on a theme
+                // optionally turn on a theme
                 ->theme('xtra')
 
                 // build navigation
@@ -60,11 +60,22 @@ public function tools()
     }
 ```
 
-#### Navigation
+TODO: 
 
-```php
-addNavigationGroup($name, $icon = '', $canSee = null);
-addNavigationPage($name, $slug, $controller, $canSee = null);
-addNavigationLink($name, $path, $canSee = null);
-addNavigationRoute($name, $routeName, $routeParams = [], $canSee = null);
-```
+### Custom Theme
+
+Based on and credits to
+https://github.com/gregoriohc/laravel-nova-theme-classify
+
+### Custom Navigation
+
+### Custom Internal Pages
+
+### Nxtra JavaScript Object
+
+### Tooltips
+
+Built-in https://atomiks.github.io/tippyjs/
+
+### Modal 
+
