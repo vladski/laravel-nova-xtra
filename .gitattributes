@@ -1,2 +1,2 @@
 # ignore js files by github-linguist so the package main language is php
-*.js linguist-detectable=false
+# *.js linguist-detectable=false
