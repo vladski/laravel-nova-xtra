@@ -1,19 +1,26 @@
+[![Latest Stable Version](https://poser.pugx.org/vladski/laravel-nova-xtra/v)](//packagist.org/packages/vladski/laravel-nova-xtra) 
+[![Total Downloads](https://poser.pugx.org/vladski/laravel-nova-xtra/downloads)](//packagist.org/packages/vladski/laravel-nova-xtra) 
+[![Latest Unstable Version](https://poser.pugx.org/vladski/laravel-nova-xtra/v/unstable)](//packagist.org/packages/vladski/laravel-nova-xtra) 
+[![License](https://poser.pugx.org/vladski/laravel-nova-xtra/license)](//packagist.org/packages/vladski/laravel-nova-xtra)
+
 # Laravel Nova Xtra
-Some extra helpers I was missing after installing Laravel Nova:
+A Laravel Nova tool for extra features out of the box:
 - custom theme
 - custom navigation
-- custom asynchronous pages
+- custom pages within Nova
 - tooltips
 - modal window
 
 This is an early stage of the package development. Not ready for production yet.
 
-### Installing
+### Install
 
-```
+```shell script
 composer require vladski/laravel-nova-xtra
-// publish theme css files in /rsources/css/nova-xtra/
-php artisaN vendor:publish --provider="Vladski\NovaXtra\ToolServiceProvider"
+```
+Publish theme_default.css and theme_xtra.css theme css files in /rsources/css/nova-xtra/ directory
+```php
+php artisan vendor:publish --provider="Vladski\NovaXtra\ToolServiceProvider"
 ```
 
 ### Usage
@@ -66,6 +73,16 @@ TODO:
 
 Based on and credits to
 https://github.com/gregoriohc/laravel-nova-theme-classify
+
+File **theme_default.css** has no styling just lists all available css selectors you can use to override Nova standard styling.
+Use this if you want start from scratch. The **theme_xtra.css** file is a fully working theme.
+
+Make copy of a theme file, name it like theme_mytheme.css and modify it. Switch to it in NovaServiceProvider.php by setting: 
+```php
+    (new \Vladski\NovaXtra\NovaXtra)
+        ->theme('xtra') 
+        .....
+```
 
 ### Custom Navigation
 
