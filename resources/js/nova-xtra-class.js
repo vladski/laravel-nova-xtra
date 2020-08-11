@@ -5,14 +5,14 @@ export default class NovaXtraClass {
         this._overlay = '<div class="xtra-container-overlay absolute pin bg-white z-20 opacity-75 flex items-center justify-center"><svg width="34" height="36" viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="spin fill-80 m-8"><path d="M20.12 20.455A12.184 12.184 0 0 1 11.5 24a12.18 12.18 0 0 1-9.333-4.319c4.772 3.933 11.88 3.687 16.36-.738a7.571 7.571 0 0 0 0-10.8c-3.018-2.982-7.912-2.982-10.931 0a3.245 3.245 0 0 0 0 4.628 3.342 3.342 0 0 0 4.685 0 1.114 1.114 0 0 1 1.561 0 1.082 1.082 0 0 1 0 1.543 5.57 5.57 0 0 1-7.808 0 5.408 5.408 0 0 1 0-7.714c3.881-3.834 10.174-3.834 14.055 0a9.734 9.734 0 0 1 .03 13.855zM4.472 5.057a7.571 7.571 0 0 0 0 10.8c3.018 2.982 7.912 2.982 10.931 0a3.245 3.245 0 0 0 0-4.628 3.342 3.342 0 0 0-4.685 0 1.114 1.114 0 0 1-1.561 0 1.082 1.082 0 0 1 0-1.543 5.57 5.57 0 0 1 7.808 0 5.408 5.408 0 0 1 0 7.714c-3.881 3.834-10.174 3.834-14.055 0a9.734 9.734 0 0 1-.015-13.87C5.096 1.35 8.138 0 11.5 0c3.75 0 7.105 1.68 9.333 4.319C16.06.386 8.953.632 4.473 5.057z" fill-rule="evenodd"></path></svg></div>';
         this._modalTpl =
             '<div class="xtra-modal-overlay fixed pin bg-80 z-20 opacity-75"></div>' +
-            '<div class="relative mx-auto max-w-lg flex justify-center z-20 py-view">' +
-                '<div class="relative w-full mx-8 bg-white rounded-lg shadow-lg overflow-hidden">' +
+            '<div class="xtra-modal-wrap relative flex justify-center z-20">' +
+                '<div class="relative w-full bg-white rounded-lg shadow-lg overflow-hidden">' +
                     '<div class="xtra-modal-content"></div>' +
                     '<div class="xtra-modal-loader hidden absolute pin bg-white z-20 opacity-75 text-center">' +
                         '<svg width="69" height="72" viewBox="0 0 23 24" xmlns="http://www.w3.org/2000/svg" class="spin fill-80 m-8"><path d="M20.12 20.455A12.184 12.184 0 0 1 11.5 24a12.18 12.18 0 0 1-9.333-4.319c4.772 3.933 11.88 3.687 16.36-.738a7.571 7.571 0 0 0 0-10.8c-3.018-2.982-7.912-2.982-10.931 0a3.245 3.245 0 0 0 0 4.628 3.342 3.342 0 0 0 4.685 0 1.114 1.114 0 0 1 1.561 0 1.082 1.082 0 0 1 0 1.543 5.57 5.57 0 0 1-7.808 0 5.408 5.408 0 0 1 0-7.714c3.881-3.834 10.174-3.834 14.055 0a9.734 9.734 0 0 1 .03 13.855zM4.472 5.057a7.571 7.571 0 0 0 0 10.8c3.018 2.982 7.912 2.982 10.931 0a3.245 3.245 0 0 0 0-4.628 3.342 3.342 0 0 0-4.685 0 1.114 1.114 0 0 1-1.561 0 1.082 1.082 0 0 1 0-1.543 5.57 5.57 0 0 1 7.808 0 5.408 5.408 0 0 1 0 7.714c-3.881 3.834-10.174 3.834-14.055 0a9.734 9.734 0 0 1-.015-13.87C5.096 1.35 8.138 0 11.5 0c3.75 0 7.105 1.68 9.333 4.319C16.06.386 8.953.632 4.473 5.057z" fill-rule="evenodd"></path></svg>' +
                     '</div>' +
                     '<div class="xtra-modal-error hidden text-center text-white px-3 py-3 bg-danger-dark"></div>' +
-                    '<div class="xtra-modal-close w-8 h-8 m-2 absolute pin-r pin-t text-50 hover:text-80"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg></div>' +
+                    '<div class="xtra-modal-close w-8 h-8 m-4 absolute pin-r pin-t text-60 hover:text-80"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg></div>' +
                 '</div>' +
             '</div>';
         this.init();
@@ -53,10 +53,21 @@ export default class NovaXtraClass {
             this._modalError.innerHTML = ''
         }
     }
-    openModal(routePath) {
+    openModalSmall(routePath) {
+        this.openModal(routePath, 'sm')
+    }
+    openModalLarge(routePath) {
+        this.openModal(routePath, 'lg')
+    }
+    openModalFull(routePath) {
+        this.openModal(routePath, 'full')
+    }
+    openModal(routePath, size) {
         this._modalContent.innerHTML = ''
         this.errorModal()
-        this.modal.classList.remove('hidden')
+        this.modal.classList.remove('hidden','size-sm','size-lg','size-full')
+        if (!size) size = 'md'
+        this.modal.classList.add('size-'+size)
         if (routePath) {
             this.loadingModal(true)
             Nova.request()
@@ -80,12 +91,28 @@ export default class NovaXtraClass {
     }
 
     /**
-     *
+     * @deprecated
      * @param params routePath
      */
     submitModal (params) {
-        this.loadingModal(true)
-        this.errorModal()
+        this.submit(params)
+    }
+  /**
+   * Submit to routePath, if modal is open treat like submitModal
+   * @param params routePath
+   */
+    submit (params) {
+
+        if (!params || !params.routePath) {
+            Nova.error('Invalid submit route');
+            return;
+        }
+
+        if (!this.modal.classList.contains('hidden')) {
+          this.loadingModal(true)
+          this.errorModal()
+        }
+
         Nova.request()
             .post(`${params.routePath}`)
             .then(response => { return response.headers['content-type'] === 'application/json' ? response : Promise.reject(response); })
@@ -95,12 +122,17 @@ export default class NovaXtraClass {
                         if (value[0] && this[value[0]]) this[value[0]](value[1] || null);
                     }.bind(this));
                 }
+                if (response.data.message) {
+                    Nova.success(response.data.message);
+                }
             })
             .catch( error => {
                 let message = this.alertResponseError(error)
-                this.errorModal(message)
+                if (!this.modal.classList.contains('hidden')) this.errorModal(message)
             })
-            .then( () => this.loadingModal(false) )
+            .then( () => {
+              if (!this.modal.classList.contains('hidden')) this.loadingModal(false)
+            })
     }
 
     /**
@@ -194,9 +226,16 @@ export default class NovaXtraClass {
                 break
             default:
               Nova.app.$router.go(Nova.app.$router.currentRoute);
-              Nova.success(`Reloading document`)
-
+              Nova.success(`Reloading document`);
         }
+    }
+
+    async goToPage(slug, query) {
+        Nova.app.$router.push({
+          name: 'nova-xtra-page',
+          params: {slug: slug},
+          query: query || {}
+        });
     }
 
     /**

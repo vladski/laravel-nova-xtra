@@ -4,6 +4,32 @@
     min-width: 300px;
     min-height: 150px;
 }
+.xtra-modal {
+  .xtra-modal-wrap {
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  &.size-sm .xtra-modal-wrap {
+    max-width: 30rem;
+  }
+  &.size-lg .xtra-modal-wrap {
+    max-width: 80rem;
+  }
+  &.size-full .xtra-modal-wrap {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    >div {
+      border-radius: 0;
+    }
+  }
+}
 
 /*---------- Navigation ----------*/
 .xtra-navigation-group {

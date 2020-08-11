@@ -11,6 +11,7 @@ export default {
         initialLoading: true,
         loading: true,
         content: '',
+        query: {},
     }),
     watch: {
         slug: function (newSlug, oldSlug) {
@@ -18,10 +19,14 @@ export default {
                 this.initializeComponent()
             }
         },
+        '$route.query': function (newQuery) {
+            this.initializeComponent()
+        }
     },
     created() {
         //
         //console.log('created');
+        //this.query = this.$route.query
     },
     destroyed() {
         //
@@ -37,7 +42,8 @@ export default {
         },
         getPageContent() {
             this.content = ''
-            return Nova.request().get('/nova-vendor/vladski/nova-xtra/page/' + this.slug)
+            return Nova.request()
+                .get('/nova-vendor/vladski/nova-xtra/page/' + this.slug, {params: this.$route.query} )
                 .then((response) => {
                     this.content = response.data
                     this.loading = false
