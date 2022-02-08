@@ -96,3 +96,21 @@ Built-in https://atomiks.github.io/tippyjs/
 
 ### Modal 
 
+### Developmewnt
+To use local package register it in composer.json:
+```json
+....
+"repositories": [
+        {
+            "type": "path",
+            "url": "/Users/scl/Projects/_vladski/laravel-nova-xtra",
+            "options": {
+                "symlink": true
+            }
+        },
+....
+```
+Then run
+```shell
+composer update vladski/laravel-nova-xtra
+```

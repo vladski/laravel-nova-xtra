@@ -13,7 +13,7 @@ Nova.booting((Vue, router, store) => {
       {
           name: 'nova-xtra-page',
           path: '/xpage/:slug',
-          component: require('./components/Tool'),
+          component: require('./components/Tool').default,
           props: true,
       }
   ])

@@ -21,7 +21,7 @@ export default class NovaXtraClass {
     init() {
         // inject modal
         this.modal = document.createElement('DIV');
-        this.modal.classList.add('xtra-modal','hidden','modal','select-none','fixed','pin','z-50','overflow-x-hidden','overflow-y-auto','text-left');
+        this.modal.classList.add('xtra-modal','hidden','modal','fixed','pin','z-50','overflow-x-hidden','overflow-y-auto','text-left');
         this.modal.innerHTML = this._modalTpl;
         document.body.appendChild(this.modal);
 
